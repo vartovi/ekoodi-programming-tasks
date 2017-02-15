@@ -16,7 +16,7 @@ namespace ticket_price_calculator
             Console.WriteLine("\nHello {0} please select: ", userName);
             Console.WriteLine("1 = Normal price 16e \n2 = Under 7 years of age free \n3 = age 65 or more -50% \n4 = age 7-15 -50% \n5 = Member of mtk -15% \n6 = Military service -50% \n7 = student -45%\n");
             bool userSelection = int.TryParse(Console.ReadLine(), out number);
-            if (!userSelection || number > 7)
+            if (!userSelection || number > 7 || number == 0)
             {
                 Console.WriteLine("Incorrect selection");
             }
@@ -58,7 +58,6 @@ namespace ticket_price_calculator
                     ticket = ticket * 0.50;
                     Console.WriteLine("Your ticket is {0} euros", ticket);
                 }
-                
                 
             }
             Console.ReadKey();
