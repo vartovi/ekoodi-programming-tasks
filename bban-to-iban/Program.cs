@@ -26,19 +26,19 @@ namespace bban_to_iban
                 string[] numbers = accountNumber.Split('-');
                 accountNumber = numbers[0] + numbers[1];
             }
-
-            Console.WriteLine(14 - accountNumber.Length);
+            
+            // Add zeros after 6th or 7th digit
+            int paddig =  (15 - accountNumber.Length + (accountNumber.Substring(7).Length));
 
             if (accountNumber[0] == '4' || accountNumber[0] == '5')
             {
-                accountNumber = accountNumber.Substring(0, 7) + "00000" + accountNumber.Substring(7);
+                accountNumber = accountNumber.Substring(0, 7) + accountNumber.Substring(7).PadLeft(paddig, '0');
             }
             else
             {
-               accountNumber = accountNumber.Substring(0, 6) + "00000" + accountNumber.Substring(6);
+               accountNumber = accountNumber.Substring(0, 6) + accountNumber.Substring(6).PadLeft(paddig, '0');
             }
 
-            
             // Calculate checksum using Luhn-algorithm
             string number = "";
             int total = 0;
@@ -68,9 +68,14 @@ namespace bban_to_iban
             }
 
             total = 10 - (total % 10);
-            Console.WriteLine("Checksum: " + total);
+            if (total != Convert.ToInt32(accountNumber.Substring(accountNumber.Length - 1)))
+            {
+                Console.WriteLine("Invalid number, checksum doesn't match");
+                Console.WriteLine(accountNumber.Substring(accountNumber.Length - 1) + " != " + total);
+            }
+            
 
-
+            // Convert letters to numbers
             for (int i = 0; i < 25; i++)
             {
                 replacement = 10 + i;
@@ -79,6 +84,7 @@ namespace bban_to_iban
 
             accountNumber = accountNumber + countryCodeNum + "00";
 
+            // Calculate IBAN checksum and print out completed number separated siwth spaces
             if (decimal.TryParse(accountNumber, out checksum))
             {
                 checksum = 98 - (checksum % 97);
