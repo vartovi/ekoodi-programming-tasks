@@ -28,15 +28,17 @@ namespace bban_to_iban
             }
             
             // Add zeros after 6th or 7th digit
-            int paddig =  (15 - accountNumber.Length + (accountNumber.Substring(7).Length));
+            int paddig = 0;
 
             if (accountNumber[0] == '4' || accountNumber[0] == '5')
             {
+                paddig = (14 - accountNumber.Length + (accountNumber.Substring(7).Length));
                 accountNumber = accountNumber.Substring(0, 7) + accountNumber.Substring(7).PadLeft(paddig, '0');
             }
             else
             {
-               accountNumber = accountNumber.Substring(0, 6) + accountNumber.Substring(6).PadLeft(paddig, '0');
+                paddig = (14 - accountNumber.Length + (accountNumber.Substring(6).Length));
+                accountNumber = accountNumber.Substring(0, 6) + accountNumber.Substring(6).PadLeft(paddig, '0');
             }
 
             // Calculate checksum using Luhn-algorithm
@@ -73,9 +75,8 @@ namespace bban_to_iban
                 Console.WriteLine("Invalid number, checksum doesn't match");
                 Console.WriteLine(accountNumber.Substring(accountNumber.Length - 1) + " != " + total);
             }
-            
 
-            // Convert letters to numbers
+            // Convert countrycode letters to numbers
             for (int i = 0; i < 25; i++)
             {
                 replacement = 10 + i;
@@ -96,9 +97,9 @@ namespace bban_to_iban
                 {
                     iban = countryCode + checksum + accountNumber;
                     iban = iban.Replace(countryCodeNum, "");
-                    Console.WriteLine("\nYour IBAN-number is: " + iban.Substring(0, 4) + " " + iban.Substring(4, 4) + " " + iban.Substring(8, 4) + " " + iban.Substring(12, 4) + " " + iban.Substring(16, 2));
                 }
-                
+                Console.WriteLine("\nYour IBAN-number is: " + iban.Substring(0, 4) + " " + iban.Substring(4, 4) + " " + iban.Substring(8, 4) + " " + iban.Substring(12, 4) + " " + iban.Substring(16, 2));
+
             }
             else
             {
