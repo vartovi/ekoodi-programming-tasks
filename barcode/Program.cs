@@ -21,6 +21,7 @@ namespace barcode
             string startSign = "105";
             string stopSign = "stop";
             bool valid = false;
+
             do
             {
                 Console.Write("Write account number (IBAN): ");
@@ -59,6 +60,7 @@ namespace barcode
                 
                 Console.Write("\nWrite the reference number: ");
                 referenceNum = Console.ReadLine();
+                referenceNum = Regex.Replace(referenceNum, @"[^\d]", "");
                 referenceNum = referenceNum.PadLeft(23, '0');
                 if (referenceNum.Length > 23)
                 {
@@ -87,19 +89,18 @@ namespace barcode
                     barcode = versNum + iban + total + referenceNum + dueDate;
                     checksum = 105;
                     int count = 0;
-                    Console.WriteLine(barcode);
+                    Console.Write("\n[" + startSign + "]");
                     for (int i = 1; i < 28; i++)
                     {
                         checksum = checksum + (Convert.ToDecimal(barcode.Substring(count, 2)) * i);
-                        Console.WriteLine((barcode.Substring(count, 2)));
+                        Console.Write((" " + barcode.Substring(count, 2)));
                         count = count + 2;
 
                     }
                     checksum = checksum % 103;
-                    Console.WriteLine(checksum);
+                    Console.Write(" [" + checksum + "] [" + stopSign + "]");
 
-
-                    Console.WriteLine("[" + startSign + "]" + versNum + iban + total + referenceNum + dueDate + checksum + "[" + stopSign + "]");
+                    //Console.WriteLine("[" + startSign + "]" + versNum + iban + total + referenceNum + dueDate + "[" + checksum + "]" + "[" + stopSign + "]");
                     valid = true;
                 }
             } while (!valid);    
