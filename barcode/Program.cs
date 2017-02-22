@@ -56,8 +56,7 @@ namespace barcode
             } while (!valid);
 
             do
-            {
-                
+            {        
                 Console.Write("\nWrite the reference number: ");
                 referenceNum = Console.ReadLine();
                 referenceNum = Regex.Replace(referenceNum, @"[^\d]", "");
