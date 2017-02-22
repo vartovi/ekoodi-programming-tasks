@@ -70,10 +70,12 @@ namespace bban_to_iban
             }
 
             total = 10 - (total % 10);
+            Console.WriteLine("Checksum = " + total);
+
             if (total != Convert.ToInt32(accountNumber.Substring(accountNumber.Length - 1)))
             {
-                Console.WriteLine("Invalid number, checksum doesn't match");
-                Console.WriteLine(accountNumber.Substring(accountNumber.Length - 1) + " != " + total);
+                Console.WriteLine("Checksum doesn't match");
+                Console.WriteLine("Last number of your account number = " + accountNumber.Substring(accountNumber.Length - 1) + " checksum = " + total);
             }
 
             // Convert countrycode letters to numbers
