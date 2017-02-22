@@ -71,7 +71,7 @@ namespace barcode
 
                 referenceNum = Regex.Replace(referenceNum, @"[^\d]", "");
                 referenceNum = referenceNum.PadLeft(23, '0');
-                //add check for international reference number later
+                
                 if (referenceNum.Length > 23)
                 {
                     Console.WriteLine("Invalid reference number");
