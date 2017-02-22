@@ -61,6 +61,10 @@ namespace referencenumber_fi
                         }
 
                         total = 10 - (total % 10);
+                        if (total == 10)
+                        {
+                            total = 0;
+                        }
 
                         if (total != Convert.ToInt32(userInput.Substring(userInput.Length - 1)))
                         {
@@ -120,6 +124,10 @@ namespace referencenumber_fi
                         }
 
                         total = 10 - (total % 10);
+                        if (total == 10)
+                        {
+                            total = 0;
+                        }
 
                         Console.WriteLine("Your reference number is : " + userInput + total + "\n");
 
