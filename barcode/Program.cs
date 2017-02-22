@@ -59,6 +59,16 @@ namespace barcode
             {        
                 Console.Write("\nWrite the reference number: ");
                 referenceNum = Console.ReadLine();
+
+                if (referenceNum.Contains("RF"))
+                {
+                    referenceNum = Regex.Replace(referenceNum, @"[^\d]", "");
+                    referenceNum = referenceNum.Substring(0, 2).PadRight((25 - referenceNum.Length), '0') + referenceNum.Substring(2);
+                    Console.WriteLine(referenceNum);
+                    Console.WriteLine(referenceNum.Length);
+                    versNum = "5";
+                }
+
                 referenceNum = Regex.Replace(referenceNum, @"[^\d]", "");
                 referenceNum = referenceNum.PadLeft(23, '0');
                 //add check for international reference number later
