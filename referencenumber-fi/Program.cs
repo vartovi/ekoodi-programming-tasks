@@ -12,7 +12,7 @@ namespace referencenumber_fi
         {
             String userInput;
             String userChoice;
-            int howMany;
+       
             while (true)
             {
                 Console.WriteLine("Do you want to: \n1 = check a reference number \n2 = create a reference number \n3 = generate multiple reference numbers");
@@ -140,11 +140,12 @@ namespace referencenumber_fi
 
                 if (userChoice == "3")
                 {
+
                     Console.Write("\nWrite a reference number base: ");
                     userInput = Console.ReadLine();
 
                     Console.Write("How many reference numbers you want to generate: ");
-                    howMany = Convert.ToInt32(Console.ReadLine());
+                    int howMany = Convert.ToInt32(Console.ReadLine());
                     
                     string refNumbers;
 
