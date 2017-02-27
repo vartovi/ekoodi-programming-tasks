@@ -9,12 +9,14 @@ namespace bank_objects
     public class Activity
     {
         private string _timestamp;
-        private decimal _total;
+        private decimal _balance;
+        private decimal _amount;
 
-        public Activity (string timestamp, decimal total)
+        public Activity (string timestamp, decimal total, decimal amount)
         {
             _timestamp = timestamp;
-            _total = total;
+            _balance = total;
+            _amount = amount;
         }
     }
 }

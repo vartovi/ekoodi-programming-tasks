@@ -8,20 +8,25 @@ namespace bank_objects
 {
     public class Account
     {
-        private string _accountNmbr;
+        private string _account;
         private string _activity;
-        private decimal _total;
-        
+        private decimal _balance;
 
-        public Account(string accountnumber)
+        public Account(string account)
         {
-            _accountNmbr = accountnumber;
+            _account = account;
         }
 
-        public string GetAccountNumber()
+        public string Activity
         {
-            return _accountNmbr;
+            get { return _activity; }
+            set { _activity = value; }
         }
 
+        public decimal Balance
+        {
+            get { return _balance; }
+            set { _balance = value; }
+        }
     }
 }

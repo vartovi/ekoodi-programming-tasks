@@ -17,6 +17,7 @@ namespace bank_objects
             get { return _accountNumber; }
             set { _accountNumber = value;  }
         }
+
         public Customer(string firstname, string lastname)
         {
             _firstName = firstname;
@@ -25,7 +26,8 @@ namespace bank_objects
 
         public override string ToString()
         {
-            return $"Firstname: {_firstName}\nLastname: {_lastName}\nAccountumber: {_accountNumber}";
+            return $"Firstname: {_firstName}\nLastname: {_lastName}\nAccountnumber: {_accountNumber}";
         }
+
     }
 }
