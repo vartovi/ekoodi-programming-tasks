@@ -8,15 +8,24 @@ namespace bank_objects
 {
     public class Activity
     {
-        private string _timestamp;
-        private decimal _balance;
+        private DateTime _timestamp;
         private decimal _amount;
 
-        public Activity (string timestamp, decimal total, decimal amount)
+        public Activity(DateTime timestamp, decimal amount)
         {
             _timestamp = timestamp;
-            _balance = total;
             _amount = amount;
+        }
+
+        public DateTime Timestamp
+        {
+            get { return _timestamp; }
+            set { _timestamp = value; }
+        }
+
+        public override string ToString()
+        {
+            return _timestamp + " \t" + _amount;
         }
     }
 }
