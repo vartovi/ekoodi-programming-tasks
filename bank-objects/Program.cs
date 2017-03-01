@@ -54,7 +54,9 @@ namespace bank_objects
 
             // Get transactions between given dates
             bank1.GetTransactions(customer1.AccountNumber, "28.2.2017", "1.8.2017");
-            
+            bank1.GetTransactions(customer2.AccountNumber, "28.2.2017", "1.5.2017");
+            bank1.GetTransactions(customer3.AccountNumber, "28.9.2017", "1.1.2018");
+
             Console.ReadKey();
         }
 
