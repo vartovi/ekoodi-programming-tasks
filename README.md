@@ -1,2 +1,2 @@
 # referencenumber-fi
-Creates of checks finnish reference number
+Creates or checks finnish reference number
