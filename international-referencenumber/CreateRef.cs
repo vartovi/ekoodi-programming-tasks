@@ -13,11 +13,11 @@ namespace international_referencenumber
             var originalRef = refNumber;
             refNumber = refNumber + "2715" + "00";
             var toDecimal = 98 - Convert.ToDecimal(refNumber) % 97;
-            var checksum = toDecimal;
+            var checksum = Convert.ToString(toDecimal);
 
-            if (checksum < 10)
+            if (toDecimal < 10)
             {
-                var cheksum = Convert.ToString(toDecimal).PadLeft(2, '0');
+                checksum = Convert.ToString(toDecimal).PadLeft(2, '0');            
             }
                
             return "Your international referencenumber is: RF" + checksum + originalRef;
