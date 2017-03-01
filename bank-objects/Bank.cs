@@ -31,13 +31,7 @@ namespace bank_objects
 
         public override string ToString()
         {
-            return  $"Bank: {_name}";
-        }
-
-        public void ShowAccounts()
-        {
-            foreach (var l in _accounts)
-                Console.WriteLine(l);
+            return  $"bank: {_name}";
         }
 
         public void NewTransaction(string account, decimal activity)

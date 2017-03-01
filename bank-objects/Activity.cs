@@ -25,7 +25,7 @@ namespace bank_objects
 
         public override string ToString()
         {
-            return _timestamp + " \t" + _amount;
+            return _timestamp.ToString("dd.MM.yyyy H:mm:ss") + " \t" + _amount;
         }
     }
 }
