@@ -49,7 +49,6 @@ namespace bank_objects
             var selectAccount = _accounts.First(item => item.ToString() == account);
 
             Console.WriteLine("Your current balance is: " + selectAccount.ReturnBalance());
-
         }
 
         public void GetTransactions(string account, string startDate, string endDate)
@@ -62,7 +61,6 @@ namespace bank_objects
         {
             var selectAccount = _accounts.First(item => item.AccountNumber == account);
             selectAccount.ShowAllTransactions();
-        
         }
 
     }
