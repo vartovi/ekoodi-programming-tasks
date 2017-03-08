@@ -8,11 +8,11 @@ namespace ski_jumping_points_calculator
 {
     public class Jump
     {
-        private double _length;
-        private double _style;
-        private double _windBonus;
-        private double _startPoint;
-        private double _points;
+        private readonly double _length;
+        private readonly double _style;
+        private readonly double _windBonus;
+        private readonly double _startPoint;
+        private readonly double _points;
 
         public Jump(double length, double style, double windBonus, double startPoint, double points)
         {
@@ -23,10 +23,35 @@ namespace ski_jumping_points_calculator
             _points = points;
         }
 
+        public double Length
+        {
+            get { return _length; }
+        }
+
+        public double Style
+        {
+            get { return _style; }
+        }
+
+        public double WindBonus
+        {
+            get { return _windBonus; }
+        }
+
+        public double StartPoint
+        {
+            get { return _startPoint; }
+        }
+
+        public double Points
+        {
+            get { return _points; }
+        }
+
         public override string ToString()
         {
             return
-                $"Jump: {_length} style: {_style} wind: {_windBonus} start {_startPoint} Points: {_points}";
+                $"Jump: {_length}  style: {_style:F1}  wind: {_windBonus:F1}  gate: {_startPoint:F1}  Points: {_points}";
         }
     }
 }

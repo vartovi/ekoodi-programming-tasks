@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,19 +9,15 @@ namespace ski_jumping_points_calculator
 {
     public class Jumper
     {
-        private string _jumperName;
-        private double _totalPoints;
-        private List<Jump> _jumps = new List<Jump>();
+        private readonly List<Jump> _jumps = new List<Jump>();
 
-        public double Points
-        {
-            get { return _totalPoints; }
-            set { _totalPoints = value; }
-        }
+        public double Points { get; set; }
+
+        public string JumperName { get; set; }
 
         public Jumper(string jumperName)
         {
-            _jumperName = jumperName;
+            JumperName = jumperName;
         }
 
         public void NewJump(string length, string windbonus, string startingpoint, string kPoint, string multiplier)
@@ -35,21 +32,19 @@ namespace ski_jumping_points_calculator
             _jumps.Add(new Jump(lengthPoints, stylePoints, windPoints, startPointPoints, total));
         }
 
-        public void ShowJumps()
+        public IEnumerable<string> ShowJumps()
         {
-            Console.WriteLine("\nJumps for " + _jumperName);
-            var count = 1;
+            var count = 0;
             foreach (var l in _jumps)
             {
-                Console.WriteLine(count + ". " + l);
-                count++;
-            }
-                
+                count = count+1;
+                yield return $"{count}. {l}\n";
+            }           
         }
 
-        public void TotalPoints()
+        public string TotalPoints()
         {
-            Console.WriteLine($"Total points: {Points}");
+            return $"Total points: {Points}\n";
         }
     }
 }
